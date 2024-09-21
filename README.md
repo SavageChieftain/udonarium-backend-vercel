@@ -21,6 +21,7 @@
 
 1. 上記のボタンをクリック
 2. 画面の指示に従ってアプリを作成
+3. あとは、[公式ドキュメント](https://github.com/TK11235/udonarium/blob/master/README.md)のフロント側の指示に従ってください
 
 ### 注意
 
@@ -29,6 +30,10 @@
 - `SKYWAY_APP_ID`: SkyWay から発行されたアプリケーション ID
 - `SKYWAY_SECRET`: SkyWay から発行されたシークレットキー
 - `ACCESS_CONTROL_ALLOW_ORIGIN`： ユドナリウムのフロントアプリを設置した URL。この場所以外からのリクエストは拒否されます。
+
+### よくわからない場合
+
+- 触らないほうが無難だぜ！
 
 ### License
 
