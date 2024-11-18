@@ -95,7 +95,7 @@ const generate = async (params: SkywayAuthParams): Promise<string> => {
   const jwtSignature = Base64UrlEncode(
     await hmacSHA256(jwtHeader + "." + jwtPayload, secret)
   );
-  const token = jwtHeader + "." + jwtPayload + "." + jwtSignature;
+  const token = `${jwtHeader}.${jwtPayload}.${jwtSignature}`;
 
   return token;
 };

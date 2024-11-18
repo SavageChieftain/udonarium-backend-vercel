@@ -1,24 +1,33 @@
-import { env } from "hono/adapter";
-import { isAllowedOrigin } from "../utils/UrlUtils";
+import { cors } from "hono/cors";
+import { HTTPException } from "hono/http-exception";
 import type { MiddlewareHandler, Context, Next } from "hono";
+
+import {
+  isAllowedOrigin,
+  getAccessControlAllowOrigin,
+} from "../utils/UrlUtils";
 
 export const corsHandler = (): MiddlewareHandler => {
   return async (context: Context, next: Next) => {
-    const { ACCESS_CONTROL_ALLOW_ORIGIN } = env<{
-      ACCESS_CONTROL_ALLOW_ORIGIN: string[] | string;
-    }>(context);
-    const requestOrigin = context.req.header("Origin") ?? "";
+    const REQUEST_ORIGIN = context.req.header("Origin");
 
-    if (!isAllowedOrigin(requestOrigin, ACCESS_CONTROL_ALLOW_ORIGIN)) {
-      context.res = new Response("Forbidden", {
-        status: 403,
-        headers: new Headers({ "Access-Control-Allow-Origin": requestOrigin }),
-      });
-      return;
+    const ACCESS_CONTROL_ALLOW_ORIGIN = getAccessControlAllowOrigin(context);
+
+    if (REQUEST_ORIGIN == undefined || REQUEST_ORIGIN === "") {
+      throw new HTTPException(400, { message: "Origin is required." });
     }
 
-    await next();
-    context.res.headers.set("Access-Control-Allow-Origin", requestOrigin);
+    if (!isAllowedOrigin(REQUEST_ORIGIN, ACCESS_CONTROL_ALLOW_ORIGIN)) {
+      throw new HTTPException(403, { message: "Forbidden." });
+    }
+
+    const corsMiddlewareHandler = cors({
+      origin: [REQUEST_ORIGIN],
+      allowHeaders: ["Content-Type", "Accept"],
+      allowMethods: ["POST", "GET", "OPTIONS"],
+      maxAge: 86400,
+    });
+    return corsMiddlewareHandler(context, next);
   };
 };
 
