@@ -8,27 +8,41 @@
     "deploy:prod": "vercel --prod"
   },
   "dependencies": {
-    "@hono/valibot-validator": "^0.5.1",
-    "@skyway-sdk/token": "^1.6.2",
-    "hono": "^4.6.2",
-    "valibot": "^1.0.0-beta.7"
+    "@hono/valibot-validator": "^0.5.2",
+    "@skyway-sdk/token": "^1.7.0",
+    "hono": "^4.7.11",
+    "valibot": "^1.1.0"
   },
   "devDependencies": {
     "typescript": "^5.6.3",
-    "vercel": "^39.0.2"
+    "vercel": "^43.2.0"
   },
   "overrides": {
     "debug": "4.3.1",
+    "vercel": {
+      "@vercel/remix-builder": {
+        "path-to-regexp": "6.3.0"
+      }
+    },
     "@vercel/node": {
       "path-to-regexp": "6.3.0",
-      "typescript": "5.6.3"
+      "undici": "^5.28.5",
+      "typescript": "5.6.3",
+      "esbuild": "^0.25.0"
+    },
+    "@vercel/gatsby-plugin-vercel-builder": {
+      "path-to-regexp": "^6.3.0",
+      "esbuild": "^0.25.0"
     },
     "@vercel/routing-utils": {
       "path-to-regexp": "6.3.0"
     },
     "@vercel/fun": {
       "semver": "7.5.2",
-      "tar": "6.2.1"
+      "tar": "6.2.1",
+      "path-match": {
+        "path-to-regexp": "6.3.0"
+      }
     },
     "@vercel/nft": {
       "semver": "7.5.2"
