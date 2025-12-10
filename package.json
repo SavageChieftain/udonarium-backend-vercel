@@ -10,42 +10,16 @@
   "dependencies": {
     "@hono/valibot-validator": "^0.5.2",
     "@skyway-sdk/token": "^1.7.0",
-    "hono": "^4.7.11",
-    "valibot": "^1.1.0"
+    "hono": "^4.10.3",
+    "valibot": "^1.2.0"
   },
   "devDependencies": {
     "typescript": "^5.6.3",
-    "vercel": "^43.2.0"
+    "vercel": "^49.1.2"
   },
   "overrides": {
-    "debug": "4.3.1",
-    "vercel": {
-      "@vercel/remix-builder": {
-        "path-to-regexp": "6.3.0"
-      }
-    },
-    "@vercel/node": {
-      "path-to-regexp": "6.3.0",
-      "undici": "^5.28.5",
-      "typescript": "5.6.3",
-      "esbuild": "^0.25.0"
-    },
-    "@vercel/gatsby-plugin-vercel-builder": {
-      "path-to-regexp": "^6.3.0",
-      "esbuild": "^0.25.0"
-    },
-    "@vercel/routing-utils": {
-      "path-to-regexp": "6.3.0"
-    },
-    "@vercel/fun": {
-      "semver": "7.5.2",
-      "tar": "6.2.1",
-      "path-match": {
-        "path-to-regexp": "6.3.0"
-      }
-    },
-    "@vercel/nft": {
-      "semver": "7.5.2"
-    }
+    "path-to-regexp": "6.3.0",
+    "esbuild": "^0.27.1",
+    "undici": "^5.28.6"
   }
 }
