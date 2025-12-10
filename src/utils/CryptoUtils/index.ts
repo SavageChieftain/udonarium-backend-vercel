@@ -9,11 +9,11 @@ const encodeText = (text: string): Uint8Array => {
   }
 };
 
-const encodeData = (data: ArrayBuffer | string): Uint8Array => {
+const encodeData = (data: ArrayBuffer | string): Uint8Array<ArrayBuffer> => {
   if (typeof data === "string") {
-    return encodeText(data);
+    return encodeText(data) as Uint8Array<ArrayBuffer>;
   }
-  return new Uint8Array(data);
+  return new Uint8Array(data) as Uint8Array<ArrayBuffer>;
 };
 
 export const hmacSHA256 = async (
