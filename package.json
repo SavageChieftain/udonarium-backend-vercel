@@ -20,6 +20,7 @@
   "overrides": {
     "path-to-regexp": "6.3.0",
     "esbuild": "^0.27.1",
-    "undici": "^5.28.6"
+    "undici": "^6.23.0",
+    "diff": "^8.0.3"
   }
 }
