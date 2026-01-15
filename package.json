@@ -5,7 +5,9 @@
     "env": "vercel env pull",
     "start": "vercel dev",
     "deploy": "vercel",
-    "deploy:prod": "vercel --prod"
+    "deploy:prod": "vercel --prod",
+    "test": "vitest --run --coverage",
+    "coverage:check": "tsx ./scripts/check-coverage.ts --threshold 100"
   },
   "dependencies": {
     "@hono/valibot-validator": "^0.6.1",
@@ -14,8 +16,21 @@
     "valibot": "^1.2.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@vitest/coverage-v8": "^4.0.17",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "jiti": "^2.6.1",
+    "prettier": "^3.8.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "vercel": "^50.4.1"
+    "typescript-eslint": "^8.53.0",
+    "vercel": "^50.4.2",
+    "vite-tsconfig-paths": "^6.0.4",
+    "vitest": "^4.0.17",
+    "yargs": "^18.0.0",
+    "yargs-parser": "^22.0.0",
+    "zx": "^8.8.5"
   },
   "overrides": {
     "path-to-regexp": "^8.3.0",

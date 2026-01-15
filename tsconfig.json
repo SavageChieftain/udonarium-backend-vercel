@@ -5,6 +5,9 @@
     "moduleResolution": "bundler",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    "types": ["vitest/globals"],
+    "baseUrl": ".",
+    "ignoreDeprecations": "6.0"
   }
 }
