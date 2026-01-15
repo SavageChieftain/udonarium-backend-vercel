@@ -1,6 +1,6 @@
-import type { AppScope, ChannelScope } from "@skyway-sdk/token";
-import { uuid, hmacSHA256 } from "../CryptoUtils";
-import { encode as Base64UrlEncode } from "../Base64Url";
+import type { AppScope, ChannelScope } from '@skyway-sdk/token';
+import { uuid, hmacSHA256 } from '../CryptoUtils';
+import { encode as Base64UrlEncode } from '../Base64Url';
 
 interface SkywayAuthParams {
   appId: string;
@@ -25,12 +25,12 @@ const generate = async (params: SkywayAuthParams): Promise<string> => {
 
   const lobbyChannels: ChannelScope[] = [
     {
-      name: `udonarium-lobby-\*-of-${lobbySize}`,
-      actions: ["read", "create"],
+      name: `udonarium-lobby-*-of-${lobbySize}`,
+      actions: ['read', 'create'],
       members: [
         {
           name: peerId,
-          actions: ["write"],
+          actions: ['write'],
           publication: {
             actions: [],
           },
@@ -45,21 +45,21 @@ const generate = async (params: SkywayAuthParams): Promise<string> => {
   const roomChannels: ChannelScope[] = [
     {
       name: channelName,
-      actions: ["read", "create"],
+      actions: ['read', 'create'],
       members: [
         {
           name: peerId,
-          actions: ["write"],
+          actions: ['write'],
           publication: {
-            actions: ["write"],
+            actions: ['write'],
           },
           subscription: {
-            actions: ["write"],
+            actions: ['write'],
           },
         },
         {
-          name: "*",
-          actions: ["signal"],
+          name: '*',
+          actions: ['signal'],
           publication: {
             actions: [],
           },
@@ -71,13 +71,13 @@ const generate = async (params: SkywayAuthParams): Promise<string> => {
     },
   ];
 
-  const header = { alg: "HS256", typ: "JWT" };
+  const header = { alg: 'HS256', typ: 'JWT' };
 
   const scope: { app: AppScope } = {
     app: {
       id: appId,
       turn: true,
-      actions: ["read"],
+      actions: ['read'],
       channels: lobbyChannels.concat(roomChannels),
     },
   };
@@ -92,9 +92,7 @@ const generate = async (params: SkywayAuthParams): Promise<string> => {
 
   const jwtHeader = Base64UrlEncode(JSON.stringify(header));
   const jwtPayload = Base64UrlEncode(JSON.stringify(payload));
-  const jwtSignature = Base64UrlEncode(
-    await hmacSHA256(jwtHeader + "." + jwtPayload, secret)
-  );
+  const jwtSignature = Base64UrlEncode(await hmacSHA256(jwtHeader + '.' + jwtPayload, secret));
   const token = `${jwtHeader}.${jwtPayload}.${jwtSignature}`;
 
   return token;

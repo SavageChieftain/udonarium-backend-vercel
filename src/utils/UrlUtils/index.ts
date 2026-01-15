@@ -1,11 +1,11 @@
-import { env } from "hono/adapter";
-import type { Context } from "hono";
+import { env } from 'hono/adapter';
+import type { Context } from 'hono';
 
 export const getAccessControlAllowOrigin = (context: Context): string[] => {
   const { ACCESS_CONTROL_ALLOW_ORIGIN } = env<{
     ACCESS_CONTROL_ALLOW_ORIGIN: string;
   }>(context);
-  return ACCESS_CONTROL_ALLOW_ORIGIN.split(",");
+  return ACCESS_CONTROL_ALLOW_ORIGIN.split(',');
 };
 
 const validateUrl = (url: string): boolean => {
@@ -21,11 +21,8 @@ const convertToUrlObjects = (origins: string[]): URL[] => {
   return origins.map((origin) => new URL(origin));
 };
 
-export const isAllowedOrigin = (
-  requestOrigin: string = "",
-  allowedOrigins: string[]
-): boolean => {
-  if (allowedOrigins.includes("*")) return true;
+export const isAllowedOrigin = (requestOrigin = '', allowedOrigins: string[]): boolean => {
+  if (allowedOrigins.includes('*')) return true;
   if (!validateUrl(requestOrigin)) return false;
 
   const requestURL = new URL(requestOrigin);
