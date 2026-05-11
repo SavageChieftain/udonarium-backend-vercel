@@ -10,10 +10,10 @@ import { AppError } from '../../errors/app-error';
 import type { AppEnv } from '../../context';
 import { skywayTokenRequestSchema } from './schemas';
 
-const handle = async (
-  c: Context<AppEnv, string, { in: { json: { channelName: string; peerId: string } } }>,
+const issueAndRespond = async (
+  c: Context<AppEnv>,
+  body: { channelName: string; peerId: string },
 ) => {
-  const body = c.req.valid('json');
   const token = await issueSkywayToken(
     { channelName: body.channelName, peerId: body.peerId },
     {
@@ -34,9 +34,9 @@ const validator = vValidator('json', skywayTokenRequestSchema, (result) => {
 });
 
 export const skywayTokenRoute = new Hono<AppEnv>()
-  .post('/skyway/tokens', validator, handle)
+  .post('/skyway/tokens', validator, async (c) => issueAndRespond(c, c.req.valid('json')))
   .post('/skyway2023/token', validator, async (c) => {
     c.header('Deprecation', 'true');
     c.header('Link', '</v1/skyway/tokens>; rel="successor-version"');
-    return handle(c);
+    return issueAndRespond(c, c.req.valid('json'));
   });

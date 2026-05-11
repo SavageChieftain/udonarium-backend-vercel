@@ -1,27 +1,16 @@
-// Setup for Vitest: ensure Web Crypto, TextEncoder, and btoa/atob are available in test environment
-if (!(globalThis as any).crypto) {
-  // Node >= 18 exposes webcrypto under crypto.webcrypto
-  try {
-    (globalThis as any).crypto = require("node:crypto").webcrypto;
-  } catch (e) {
-    // ignore
-  }
+import { webcrypto } from 'node:crypto';
+import { TextEncoder as NodeTextEncoder } from 'node:util';
+
+interface PolyfillTarget {
+  crypto?: unknown;
+  TextEncoder?: unknown;
+  btoa?: (s: string) => string;
+  atob?: (s: string) => string;
 }
 
-if (!(globalThis as any).TextEncoder) {
-  try {
-    (globalThis as any).TextEncoder = require("util").TextEncoder;
-  } catch (e) {
-    // ignore
-  }
-}
+const g = globalThis as unknown as PolyfillTarget;
 
-// Polyfill btoa/atob using Buffer for Node test env
-if (!(globalThis as any).btoa) {
-  (globalThis as any).btoa = (str: string) =>
-    Buffer.from(str, "binary").toString("base64");
-}
-if (!(globalThis as any).atob) {
-  (globalThis as any).atob = (b64: string) =>
-    Buffer.from(b64, "base64").toString("binary");
-}
+if (!g.crypto) g.crypto = webcrypto;
+if (!g.TextEncoder) g.TextEncoder = NodeTextEncoder;
+if (!g.btoa) g.btoa = (s: string) => Buffer.from(s, 'binary').toString('base64');
+if (!g.atob) g.atob = (s: string) => Buffer.from(s, 'base64').toString('binary');
