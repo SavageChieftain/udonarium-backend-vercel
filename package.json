@@ -7,33 +7,33 @@
     "deploy": "vercel",
     "deploy:prod": "vercel --prod",
     "test": "vitest --run --coverage",
+    "lint": "npx eslint .",
+    "typecheck": "tsc --noEmit",
     "coverage:check": "tsx ./scripts/check-coverage.ts --threshold 100"
   },
   "dependencies": {
     "@hono/valibot-validator": "^0.6.1",
     "@skyway-sdk/token": "^2.1.0",
-    "hono": "^4.11.4",
+    "hono": "^4.12.18",
     "valibot": "^1.2.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^25.6.2",
     "@vitest/coverage-v8": "^4.0.17",
-    "eslint": "^9.39.2",
+    "eslint": "^10.3.0",
     "eslint-config-prettier": "^10.1.8",
-    "jiti": "^2.6.1",
-    "prettier": "^3.8.0",
+    "jiti": "^2.7.0",
+    "prettier": "^3.8.3",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.3",
     "typescript-eslint": "^8.53.0",
     "vercel": "^53.3.1",
     "vite-tsconfig-paths": "^6.0.4",
     "vitest": "^4.0.17",
-    "yargs": "^18.0.0",
-    "yargs-parser": "^22.0.0",
     "zx": "^8.8.5"
   },
   "overrides": {
-    "ajv": "^8.17.1",
     "path-to-regexp": "^8.3.0",
     "undici": "^7.25.0",
     "diff": "^8.0.3",
@@ -41,6 +41,9 @@
     "srvx": "^0.11.13",
     "smol-toml": "^1.6.1",
     "minimatch": "^10.2.5",
-    "@tootallnate/once": "^3.0.1"
+    "@tootallnate/once": "^3.0.1",
+    "@vercel/static-config": {
+      "ajv": "^8.20.0"
+    }
   }
 }
