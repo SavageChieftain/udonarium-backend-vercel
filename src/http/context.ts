@@ -4,4 +4,6 @@ export interface AppVariables {
   config: AppConfig;
 }
 
-export type AppEnv = { Variables: AppVariables };
+export interface AppEnv {
+  Variables: AppVariables;
+}

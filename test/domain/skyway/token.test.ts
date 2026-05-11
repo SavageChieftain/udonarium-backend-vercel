@@ -92,14 +92,14 @@ describe('issueSkywayToken', () => {
   });
 
   it('builds both lobby and room scopes from peerId/channelName/lobbySize', async () => {
-    let capturedChannels: Array<{ name: string }> = [];
+    let capturedChannels: { name: string }[] = [];
     const deps = buildDeps({
       config: { appId: 'app', secret: 'secret', lobbySize: 5, tokenTtlSeconds: 86_400 },
       encode: (input) => {
         if (typeof input === 'string') {
           try {
             const parsed = JSON.parse(input) as {
-              scope?: { app: { channels: Array<{ name: string }> } };
+              scope?: { app: { channels: { name: string }[] } };
             };
             if (parsed.scope) capturedChannels = parsed.scope.app.channels;
           } catch {
