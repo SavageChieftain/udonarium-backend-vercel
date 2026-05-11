@@ -1,6 +1,5 @@
-// Mock hono/adapter env for routes that use env()
 vi.mock('hono/adapter', () => ({
-  env: (c: any) => ({
+  env: () => ({
     ENVIRONMENT: 'test',
     SKYWAY_APP_ID: 'appId',
     SKYWAY_SECRET: 'secret',
@@ -15,40 +14,40 @@ describe('api entry', () => {
   it('responds to /', async () => {
     const res = await app.fetch(new Request('http://localhost/'));
     expect(res.status).toBe(200);
-    const body = await res.json();
-    expect(body).toHaveProperty('message');
+    expect(await res.json()).toHaveProperty('message');
   });
 
-  it('v1 status endpoint', async () => {
+  it('serves v1 status endpoint', async () => {
     const res = await app.fetch(
       new Request('http://localhost/v1/status', {
         headers: { Origin: 'https://example.com' },
       }),
     );
     expect(res.status).toBe(200);
-    const text = await res.text();
-    expect(text).toBe('OK');
+    expect(await res.text()).toBe('OK');
   });
 
-  it('v1 token endpoint returns token with valid body', async () => {
-    const body = JSON.stringify({
-      formatVersion: 1,
-      channelName: 'room',
-      peerId: 'peer-1',
-    });
+  it('issues a token at the legacy path /v1/skyway2023/token', async () => {
     const res = await app.fetch(
       new Request('http://localhost/v1/skyway2023/token', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Origin: 'https://example.com',
-        },
-        body,
+        headers: { 'Content-Type': 'application/json', Origin: 'https://example.com' },
+        body: JSON.stringify({ formatVersion: 1, channelName: 'room', peerId: 'peer-1' }),
       }),
     );
-    // Since SkywayAuth.generate uses crypto and creates a token, expect 200
     expect(res.status).toBe(200);
-    const json = await res.json();
-    expect(json).toHaveProperty('token');
+    expect(await res.json()).toHaveProperty('token');
+  });
+
+  it('issues a token at the new path /v1/skyway/tokens', async () => {
+    const res = await app.fetch(
+      new Request('http://localhost/v1/skyway/tokens', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Origin: 'https://example.com' },
+        body: JSON.stringify({ formatVersion: 1, channelName: 'room', peerId: 'peer-1' }),
+      }),
+    );
+    expect(res.status).toBe(200);
+    expect(await res.json()).toHaveProperty('token');
   });
 });
