@@ -67,7 +67,7 @@
 
 ## Requirements
 
-- [Node.js](https://nodejs.org/) **LTS** 以上
+- [Node.js](https://nodejs.org/) **24.x** (`package.json` の `engines.node` で固定。Vercel のビルドランタイムもこれに従います)
 - [Vercel](https://vercel.com/) アカウントと [Vercel CLI](https://vercel.com/docs/cli)
 - [SkyWay](https://skyway.ntt.com/) アカウントとアプリケーション (App ID / Secret)
 - GitHub / GitLab / Bitbucket いずれかのアカウント (Vercel 連携用)
