@@ -13,7 +13,6 @@
       "Bash(npm ls *)"
     ]
   },
-  // このプロジェクトは全てを自己責任としてください
   "attribution": {
     "commit": "",
     "pr": ""
