@@ -8,9 +8,18 @@ vi.mock('hono/adapter', () => ({
   }),
 }));
 
-import { app } from '../../api/index';
+import handler, { app } from '../../api/index';
 
 describe('api entry', () => {
+  // @vercel/node は default export が `fetch` を持つ場合のみ Web Standard
+  // ハンドラとして扱い、素の関数だと Node の (req, res) ハンドラと誤検出する。
+  it('exposes a fetch handler as the default export for the Vercel Node.js runtime', async () => {
+    expect(typeof handler.fetch).toBe('function');
+
+    const res = await handler.fetch(new Request('http://localhost/'));
+    expect(res.status).toBe(200);
+  });
+
   it('responds to /', async () => {
     const res = await app.fetch(new Request('http://localhost/'));
     expect(res.status).toBe(200);

@@ -1,13 +1,13 @@
 # udonarium-backend-vercel
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
-[![Runtime: Vercel Edge](https://img.shields.io/badge/runtime-Vercel%20Edge-black.svg)](https://vercel.com/docs/functions/runtimes/edge)
+[![Runtime: Vercel Functions (Node.js)](<https://img.shields.io/badge/runtime-Vercel%20Functions%20(Node.js)-black.svg>)](https://vercel.com/docs/functions/runtimes/node-js)
 [![Built with: Hono](https://img.shields.io/badge/built%20with-Hono-FF7A00.svg)](https://hono.dev/)
 [![Test Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](./vitest.config.ts)
 
-ボードゲームオンラインセッション支援ツール [Udonarium](https://github.com/TK11235/udonarium) のバックエンド ([udonarium-backend](https://github.com/TK11235/udonarium-backend)) を、[Vercel](https://vercel.com/) の Edge Runtime 上で動作するように再実装したものです。
+ボードゲームオンラインセッション支援ツール [Udonarium](https://github.com/TK11235/udonarium) のバックエンド ([udonarium-backend](https://github.com/TK11235/udonarium-backend)) を、[Vercel Functions](https://vercel.com/docs/functions) 上で動作するように再実装したものです。
 
-[SkyWay](https://skyway.ntt.com/) の認証トークン発行をはじめとした WebRTC セッションに必要なエンドポイントを、サーバーレスかつグローバルに配信できます。
+[SkyWay](https://skyway.ntt.com/) の認証トークン発行をはじめとした WebRTC セッションに必要なエンドポイントを、サーバーレスに配信できます。
 
 ---
 
@@ -28,8 +28,8 @@
 
 ## Features
 
-- **Vercel Edge Runtime ネイティブ** — コールドスタートが速く、世界各地のリージョンから低レイテンシで応答します
-- **[Hono](https://hono.dev/) ベースの軽量ルーター** — Edge / Node どちらでも動く Web フレームワーク
+- **Vercel Functions (Node.js ランタイム) ネイティブ** — Fluid compute 上で動作し、東京リージョン (`hnd1`) に固定して国内から低レイテンシで応答します
+- **[Hono](https://hono.dev/) ベースの軽量ルーター** — Web 標準 API のみで実装され、ランタイム非依存
 - **[Valibot](https://valibot.dev/) によるスキーマ駆動のバリデーション** — 環境変数とリクエストボディを型安全に検証
 - **依存性注入された純関数ドメイン** — JWT / HMAC / UUID 等を全て外部から注入し、テスト容易性を確保
 - **Vitest による 100% テストカバレッジ** — `lines / functions / branches / statements` すべて 100% を CI で強制
@@ -39,8 +39,8 @@
 
 ```
                        ┌────────────────────┐
-   Udonarium Web ──▶   │  Vercel Edge       │ ──▶  SkyWay (WebRTC)
-   (browser)           │  Function (Hono)   │
+   Udonarium Web ──▶   │  Vercel Function   │ ──▶  SkyWay (WebRTC)
+   (browser)           │  Node.js / hnd1    │
                        └────────────────────┘
                                  │
                        ┌─────────┴────────┐
@@ -50,7 +50,8 @@
                        └──────────────────┘
 ```
 
-- ランタイム: **Vercel Edge** (`api/index.ts` で Hono アプリを `hono/vercel` の `handle` にバインド)
+- ランタイム: **Vercel Functions / Node.js** (`api/index.ts` が `{ fetch }` を default export し、Vercel が Web Standard ハンドラとして解決)
+- リージョン: **`hnd1` (東京)** を `vercel.json` の `regions` で固定 (未指定時の既定は `iad1` / ワシントン D.C.)
 - ルート: `src/http/routes/`
 - ミドルウェア: `src/http/middlewares/` (CORS / 設定ロード)
 - ドメインロジック: `src/domain/skyway/` (SkyWay JWT 発行、Channel スコープ生成)
@@ -180,7 +181,7 @@ npm start
 ```
 .
 ├── api/
-│   └── index.ts              # Vercel Edge Function エントリーポイント
+│   └── index.ts              # Vercel Function エントリーポイント ({ fetch } を default export)
 ├── src/
 │   ├── config/               # 環境変数スキーマ・正規化
 │   ├── domain/
@@ -194,7 +195,7 @@ npm start
 ├── test/                     # Vitest テスト (src と同形ツリー)
 ├── scripts/
 │   └── check-coverage.ts     # カバレッジ閾値チェック
-├── vercel.json               # 全リクエストを /api にルーティング
+├── vercel.json               # 全リクエストを /api にルーティング + 実行リージョン (hnd1)
 └── vitest.config.ts          # Vitest 設定 (100% カバレッジ強制)
 ```
 
