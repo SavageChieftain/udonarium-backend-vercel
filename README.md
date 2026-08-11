@@ -74,13 +74,13 @@
 
 ## Environment Variables
 
-| 変数名 | 必須 | 既定値 | 説明 |
-| :--- | :---: | :--- | :--- |
-| `SKYWAY_APP_ID` | ✅ | — | SkyWay コンソールで発行したアプリケーション ID |
-| `SKYWAY_SECRET` | ✅ | — | SkyWay の Secret Key (JWT 署名鍵) |
-| `ACCESS_CONTROL_ALLOW_ORIGIN` | ✅ | — | 許可するオリジン。カンマ区切りで複数指定可 (`*` で全許可) |
-| `SKYWAY_UDONARIUM_LOBBY_SIZE` | | `3` | ロビーチャンネルの分割サイズ |
-| `SKYWAY_TOKEN_TTL_SECONDS` | | `86400` | 発行する JWT の有効期間 (秒)。`60` 〜 `604800` の範囲 |
+| 変数名                        | 必須 | 既定値  | 説明                                                      |
+| :---------------------------- | :--: | :------ | :-------------------------------------------------------- |
+| `SKYWAY_APP_ID`               |  ✅  | —       | SkyWay コンソールで発行したアプリケーション ID            |
+| `SKYWAY_SECRET`               |  ✅  | —       | SkyWay の Secret Key (JWT 署名鍵)                         |
+| `ACCESS_CONTROL_ALLOW_ORIGIN` |  ✅  | —       | 許可するオリジン。カンマ区切りで複数指定可 (`*` で全許可) |
+| `SKYWAY_UDONARIUM_LOBBY_SIZE` |      | `3`     | ロビーチャンネルの分割サイズ                              |
+| `SKYWAY_TOKEN_TTL_SECONDS`    |      | `86400` | 発行する JWT の有効期間 (秒)。`60` 〜 `604800` の範囲     |
 
 ローカル開発時は Vercel から `.env` を取得できます。
 
@@ -99,13 +99,13 @@ npm run env   # vercel env pull
 { "error": { "code": "ERROR_CODE", "message": "human readable message" } }
 ```
 
-| Code | HTTP | 発生条件 |
-| :--- | :---: | :--- |
-| `CONFIG_INVALID` | 500 | サーバー側の環境変数が不正 |
-| `ORIGIN_REQUIRED` | 400 | `Origin` ヘッダが未指定 |
-| `ORIGIN_FORBIDDEN` | 403 | 許可されていないオリジンからのリクエスト |
-| `VALIDATION_FAILED` | 400 | リクエストボディがスキーマと不一致 |
-| `INTERNAL_ERROR` | 500 | 想定外のエラー |
+| Code                | HTTP | 発生条件                                 |
+| :------------------ | :--: | :--------------------------------------- |
+| `CONFIG_INVALID`    | 500  | サーバー側の環境変数が不正               |
+| `ORIGIN_REQUIRED`   | 400  | `Origin` ヘッダが未指定                  |
+| `ORIGIN_FORBIDDEN`  | 403  | 許可されていないオリジンからのリクエスト |
+| `VALIDATION_FAILED` | 400  | リクエストボディがスキーマと不一致       |
+| `INTERNAL_ERROR`    | 500  | 想定外のエラー                           |
 
 ### `GET /`
 
@@ -125,7 +125,7 @@ curl -H "Origin: https://your-frontend.example" https://<your-deployment>/v1/sta
 # OK
 ```
 
-### `POST /v1/skyway/tokens` *(推奨)*
+### `POST /v1/skyway/tokens` _(推奨)_
 
 SkyWay の JWT を発行します。Udonarium クライアントからセッション接続前に呼び出してください。
 
@@ -149,7 +149,7 @@ Content-Type: application/json
 { "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." }
 ```
 
-### `POST /v1/skyway2023/token` *(deprecated)*
+### `POST /v1/skyway2023/token` _(deprecated)_
 
 旧 `udonarium-backend` クライアント互換のため残されたエンドポイント。レスポンスに以下のヘッダが付与されます。
 

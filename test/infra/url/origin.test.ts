@@ -42,8 +42,6 @@ describe('isAllowedOrigin', () => {
   });
 
   it('skips invalid entries in the allow list', () => {
-    expect(isAllowedOrigin('https://example.com', ['not a url', 'https://example.com'])).toBe(
-      true,
-    );
+    expect(isAllowedOrigin('https://example.com', ['not a url', 'https://example.com'])).toBe(true);
   });
 });
