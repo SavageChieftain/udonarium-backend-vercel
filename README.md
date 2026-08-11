@@ -192,10 +192,12 @@ npm start
 │   │   ├── middlewares/      # CORS / 設定ロード
 │   │   └── routes/           # ルート定義 (root, v1)
 │   └── infra/                # crypto / encoding / url 実装
+├── public/                   # 空。Vercel にリポジトリ全体を静的公開させないための出力先
 ├── test/                     # Vitest テスト (src と同形ツリー)
 ├── scripts/
 │   └── check-coverage.ts     # カバレッジ閾値チェック
-├── vercel.json               # 全リクエストを /api にルーティング + 実行リージョン (hnd1)
+├── vercel.json               # ルーティング / 実行リージョン (hnd1) / 静的出力先
+├── .github/workflows/ci.yml  # lint・typecheck・テスト・カバレッジ 100% の強制
 └── vitest.config.ts          # Vitest 設定 (100% カバレッジ強制)
 ```
 

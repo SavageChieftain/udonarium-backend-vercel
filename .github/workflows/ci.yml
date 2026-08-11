@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: package.json
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run lint
+
+      # 相対 import の拡張子漏れはここでしか検出できない。
+      # Vercel は型チェックせずトランスパイルするため、抜けると本番で
+      # ERR_MODULE_NOT_FOUND になる (b0995cc 参照)。
+      - run: npm run typecheck
+
+      - run: npm test
+
+      - run: npm run coverage:check

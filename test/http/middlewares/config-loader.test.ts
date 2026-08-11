@@ -37,6 +37,24 @@ describe('configLoader middleware', () => {
     expect(body.cors.allowedOrigins).toEqual(['https://example.com']);
   });
 
+  it('parses the environment once and reuses it for subsequent requests', async () => {
+    rawEnv = {
+      SKYWAY_APP_ID: 'app',
+      SKYWAY_SECRET: 'secret',
+      ACCESS_CONTROL_ALLOW_ORIGIN: 'https://example.com',
+    };
+    const app = buildApp();
+    const first = await app.fetch(new Request('http://localhost/'));
+
+    // 2 回目のリクエストではキャッシュが使われるため、env が差し替わっても影響しない
+    rawEnv = {};
+    const second = await app.fetch(new Request('http://localhost/'));
+
+    expect(first.status).toBe(200);
+    expect(second.status).toBe(200);
+    expect(await second.json()).toEqual(await first.json());
+  });
+
   it('surfaces CONFIG_INVALID through the error handler when env is invalid', async () => {
     rawEnv = {};
     const res = await buildApp().fetch(new Request('http://localhost/'));
