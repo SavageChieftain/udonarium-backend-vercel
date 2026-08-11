@@ -6,9 +6,9 @@ vi.mock('hono/adapter', () => ({
   env: () => rawEnv,
 }));
 
-import { onError } from '../../../src/http/errors/handler';
-import { configLoader } from '../../../src/http/middlewares/config-loader';
-import type { AppEnv } from '../../../src/http/context';
+import { onError } from '../../../src/http/errors/handler.js';
+import { configLoader } from '../../../src/http/middlewares/config-loader.js';
+import type { AppEnv } from '../../../src/http/context.js';
 
 const buildApp = () => {
   const app = new Hono<AppEnv>();

@@ -1,4 +1,4 @@
-import { decode, encode } from '../../../src/infra/encoding/base64url';
+import { decode, encode } from '../../../src/infra/encoding/base64url.js';
 
 const encoder = new TextEncoder();
 

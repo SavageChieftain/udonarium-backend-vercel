@@ -1,5 +1,5 @@
-import { parseConfig } from '../../src/config';
-import { AppError } from '../../src/http/errors/app-error';
+import { parseConfig } from '../../src/config/index.js';
+import { AppError } from '../../src/http/errors/app-error.js';
 
 const validRaw = {
   SKYWAY_APP_ID: 'app',

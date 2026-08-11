@@ -1,4 +1,4 @@
-import { createApp } from '../src/http/app';
+import { createApp } from '../src/http/app.js';
 
 export const app = createApp();
 

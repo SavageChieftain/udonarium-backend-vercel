@@ -1,9 +1,9 @@
 import { cors } from 'hono/cors';
 import type { MiddlewareHandler } from 'hono';
 
-import { isAllowedOrigin } from '../../infra/url/origin';
-import { AppError } from '../errors/app-error';
-import type { AppEnv } from '../context';
+import { isAllowedOrigin } from '../../infra/url/origin.js';
+import { AppError } from '../errors/app-error.js';
+import type { AppEnv } from '../context.js';
 
 export const createCorsMiddleware = (): MiddlewareHandler<AppEnv> => async (c, next) => {
   const { allowedOrigins } = c.var.config.cors;

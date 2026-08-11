@@ -1,11 +1,11 @@
 import { Hono } from 'hono';
 
-import { onError } from './errors/handler';
-import { configLoader } from './middlewares/config-loader';
-import { createCorsMiddleware } from './middlewares/cors';
-import { rootRoute } from './routes/root';
-import { v1Routes } from './routes/v1';
-import type { AppEnv } from './context';
+import { onError } from './errors/handler.js';
+import { configLoader } from './middlewares/config-loader.js';
+import { createCorsMiddleware } from './middlewares/cors.js';
+import { rootRoute } from './routes/root.js';
+import { v1Routes } from './routes/v1/index.js';
+import type { AppEnv } from './context.js';
 
 export const createApp = (): Hono<AppEnv> => {
   const app = new Hono<AppEnv>();

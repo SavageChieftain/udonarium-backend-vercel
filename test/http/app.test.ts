@@ -4,7 +4,7 @@ vi.mock('hono/adapter', () => ({
   env: () => rawEnv,
 }));
 
-import { createApp } from '../../src/http/app';
+import { createApp } from '../../src/http/app.js';
 
 const baseEnv = {
   SKYWAY_APP_ID: 'app',

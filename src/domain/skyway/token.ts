@@ -1,6 +1,6 @@
-import { buildJwtHeader, buildJwtPayload, signJwt } from './jwt';
-import { buildLobbyChannelScope, buildRoomChannelScope } from './scopes';
-import type { IssueTokenDeps, IssueTokenInput } from './types';
+import { buildJwtHeader, buildJwtPayload, signJwt } from './jwt.js';
+import { buildLobbyChannelScope, buildRoomChannelScope } from './scopes.js';
+import type { IssueTokenDeps, IssueTokenInput } from './types.js';
 
 export const issueSkywayToken = async (
   input: IssueTokenInput,

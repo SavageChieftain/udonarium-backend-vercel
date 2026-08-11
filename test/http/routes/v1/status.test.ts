@@ -1,4 +1,4 @@
-import { statusRoute } from '../../../../src/http/routes/v1/status';
+import { statusRoute } from '../../../../src/http/routes/v1/status.js';
 
 describe('statusRoute', () => {
   it('GET /status returns plain OK', async () => {

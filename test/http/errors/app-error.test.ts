@@ -1,4 +1,4 @@
-import { AppError } from '../../../src/http/errors/app-error';
+import { AppError } from '../../../src/http/errors/app-error.js';
 
 describe('AppError', () => {
   it('carries code, status, message, and name', () => {

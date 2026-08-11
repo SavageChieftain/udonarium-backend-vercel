@@ -1,4 +1,4 @@
-import { rootRoute } from '../../../src/http/routes/root';
+import { rootRoute } from '../../../src/http/routes/root.js';
 
 describe('rootRoute', () => {
   it('GET / returns hello JSON', async () => {

@@ -1,9 +1,9 @@
 import { Hono } from 'hono';
 
-import { skywayTokenRoute } from '../../../../src/http/routes/v1/skyway-token';
-import { onError } from '../../../../src/http/errors/handler';
-import type { AppConfig } from '../../../../src/config/types';
-import type { AppEnv } from '../../../../src/http/context';
+import { skywayTokenRoute } from '../../../../src/http/routes/v1/skyway-token.js';
+import { onError } from '../../../../src/http/errors/handler.js';
+import type { AppConfig } from '../../../../src/config/types.js';
+import type { AppEnv } from '../../../../src/http/context.js';
 
 const stubConfig = (): AppConfig => ({
   skyway: { appId: 'app', secret: 'secret', lobbySize: 3, tokenTtlSeconds: 86_400 },

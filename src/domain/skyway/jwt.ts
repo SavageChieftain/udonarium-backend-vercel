@@ -1,4 +1,4 @@
-import type { JwtHeader, JwtPayload, JwtPayloadInput } from './types';
+import type { JwtHeader, JwtPayload, JwtPayloadInput } from './types.js';
 
 export const buildJwtHeader = (): JwtHeader => ({ alg: 'HS256', typ: 'JWT' });
 

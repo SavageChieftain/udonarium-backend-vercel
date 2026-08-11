@@ -1,8 +1,8 @@
 import { safeParse } from 'valibot';
 
-import { AppError } from '../http/errors/app-error';
-import { envSchema } from './schema';
-import type { AppConfig } from './types';
+import { AppError } from '../http/errors/app-error.js';
+import { envSchema } from './schema.js';
+import type { AppConfig } from './types.js';
 
 export const parseConfig = (raw: unknown): AppConfig => {
   const result = safeParse(envSchema, raw);

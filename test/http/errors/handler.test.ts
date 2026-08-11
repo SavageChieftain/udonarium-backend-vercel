@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 
-import { AppError } from '../../../src/http/errors/app-error';
-import { onError } from '../../../src/http/errors/handler';
+import { AppError } from '../../../src/http/errors/app-error.js';
+import { onError } from '../../../src/http/errors/handler.js';
 
 const buildApp = (thrown: unknown) => {
   const app = new Hono();

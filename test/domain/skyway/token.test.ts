@@ -1,5 +1,5 @@
-import { issueSkywayToken } from '../../../src/domain/skyway/token';
-import type { IssueTokenDeps } from '../../../src/domain/skyway/types';
+import { issueSkywayToken } from '../../../src/domain/skyway/token.js';
+import type { IssueTokenDeps } from '../../../src/domain/skyway/types.js';
 
 const buildDeps = (overrides: Partial<IssueTokenDeps> = {}): IssueTokenDeps => ({
   config: { appId: 'app', secret: 'secret', lobbySize: 3, tokenTtlSeconds: 86_400 },

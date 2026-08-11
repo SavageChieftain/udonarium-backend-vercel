@@ -1,9 +1,9 @@
 import { Hono } from 'hono';
 
-import { onError } from '../../../src/http/errors/handler';
-import { createCorsMiddleware } from '../../../src/http/middlewares/cors';
-import type { AppEnv } from '../../../src/http/context';
-import type { AppConfig } from '../../../src/config/types';
+import { onError } from '../../../src/http/errors/handler.js';
+import { createCorsMiddleware } from '../../../src/http/middlewares/cors.js';
+import type { AppEnv } from '../../../src/http/context.js';
+import type { AppConfig } from '../../../src/config/types.js';
 
 const stubConfig = (allowedOrigins: string[]): AppConfig => ({
   skyway: { appId: 'app', secret: 'secret', lobbySize: 3, tokenTtlSeconds: 86_400 },

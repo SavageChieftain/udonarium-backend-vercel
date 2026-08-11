@@ -8,7 +8,7 @@ vi.mock('hono/adapter', () => ({
   }),
 }));
 
-import handler, { app } from '../../api/index';
+import handler, { app } from '../../api/index.js';
 
 describe('api entry', () => {
   // @vercel/node は default export が `fetch` を持つ場合のみ Web Standard

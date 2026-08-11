@@ -1,4 +1,4 @@
-import { encodeData } from './encoding';
+import { encodeData } from './encoding.js';
 
 export const hmacSHA256 = async (
   message: ArrayBuffer | string,

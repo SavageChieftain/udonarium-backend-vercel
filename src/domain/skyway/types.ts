@@ -1,6 +1,6 @@
 import type { AppScope, ChannelScope } from '@skyway-sdk/token';
 
-import type { SkywayConfig } from '../../config/types';
+import type { SkywayConfig } from '../../config/types.js';
 
 export interface IssueTokenInput {
   channelName: string;

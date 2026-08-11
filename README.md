@@ -220,6 +220,10 @@ Pull Request 大歓迎です。以下を満たすようにお願いします。
 1. ESLint / Prettier の設定に従ったフォーマット
 2. 追加・変更したコードに対する Vitest テスト (カバレッジ 100% 維持)
 3. 公開 API (エンドポイントや環境変数) を変更する場合は本 README を更新
+4. **相対 import には拡張子を付ける** (`./foo.js` / `./foo/index.js`)。本プロジェクトは
+   `"type": "module"` の純 ESM で、Vercel は TypeScript をバンドルせずファイル単位で
+   トランスパイルするため、拡張子なしの指定は実行時に `ERR_MODULE_NOT_FOUND` になる。
+   `tsconfig.json` の `moduleResolution: "nodenext"` が `npm run typecheck` で検出する
 
 ```sh
 # Lint

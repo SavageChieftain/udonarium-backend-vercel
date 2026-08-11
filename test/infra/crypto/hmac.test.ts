@@ -1,4 +1,4 @@
-import { hmacSHA256 } from '../../../src/infra/crypto/hmac';
+import { hmacSHA256 } from '../../../src/infra/crypto/hmac.js';
 
 describe('hmacSHA256', () => {
   it('returns a 32-byte ArrayBuffer', async () => {

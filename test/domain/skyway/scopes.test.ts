@@ -1,4 +1,7 @@
-import { buildLobbyChannelScope, buildRoomChannelScope } from '../../../src/domain/skyway/scopes';
+import {
+  buildLobbyChannelScope,
+  buildRoomChannelScope,
+} from '../../../src/domain/skyway/scopes.js';
 
 describe('buildLobbyChannelScope', () => {
   it('embeds the lobby size in the channel name', () => {

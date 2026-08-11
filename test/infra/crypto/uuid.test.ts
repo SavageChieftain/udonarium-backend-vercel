@@ -1,4 +1,4 @@
-import { uuid } from '../../../src/infra/crypto/uuid';
+import { uuid } from '../../../src/infra/crypto/uuid.js';
 
 describe('uuid', () => {
   it('returns an RFC 4122 v4 string', () => {

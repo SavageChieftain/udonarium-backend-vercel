@@ -1,4 +1,4 @@
-import { buildJwtHeader, buildJwtPayload, signJwt } from '../../../src/domain/skyway/jwt';
+import { buildJwtHeader, buildJwtPayload, signJwt } from '../../../src/domain/skyway/jwt.js';
 
 describe('buildJwtHeader', () => {
   it('returns HS256 / JWT header', () => {

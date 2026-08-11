@@ -2,13 +2,13 @@ import { Hono } from 'hono';
 import { vValidator } from '@hono/valibot-validator';
 import type { Context } from 'hono';
 
-import { issueSkywayToken } from '../../../domain/skyway/token';
-import { encode as base64UrlEncode } from '../../../infra/encoding/base64url';
-import { hmacSHA256 } from '../../../infra/crypto/hmac';
-import { uuid } from '../../../infra/crypto/uuid';
-import { AppError } from '../../errors/app-error';
-import type { AppEnv } from '../../context';
-import { skywayTokenRequestSchema } from './schemas';
+import { issueSkywayToken } from '../../../domain/skyway/token.js';
+import { encode as base64UrlEncode } from '../../../infra/encoding/base64url.js';
+import { hmacSHA256 } from '../../../infra/crypto/hmac.js';
+import { uuid } from '../../../infra/crypto/uuid.js';
+import { AppError } from '../../errors/app-error.js';
+import type { AppEnv } from '../../context.js';
+import { skywayTokenRequestSchema } from './schemas.js';
 
 const issueAndRespond = async (
   c: Context<AppEnv>,

@@ -1,4 +1,4 @@
-import { isAllowedOrigin, tryParseUrl } from '../../../src/infra/url/origin';
+import { isAllowedOrigin, tryParseUrl } from '../../../src/infra/url/origin.js';
 
 describe('tryParseUrl', () => {
   it('returns URL for valid input', () => {

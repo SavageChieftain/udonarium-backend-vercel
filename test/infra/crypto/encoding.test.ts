@@ -1,4 +1,4 @@
-import { encodeData, encodeText } from '../../../src/infra/crypto/encoding';
+import { encodeData, encodeText } from '../../../src/infra/crypto/encoding.js';
 
 describe('encoding', () => {
   it('encodeText returns Uint8Array', () => {

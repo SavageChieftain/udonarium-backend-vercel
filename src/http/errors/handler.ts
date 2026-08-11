@@ -1,6 +1,6 @@
 import type { Context } from 'hono';
 
-import { AppError } from './app-error';
+import { AppError } from './app-error.js';
 
 export const onError = (err: Error, c: Context) => {
   if (err instanceof AppError) {
