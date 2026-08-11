@@ -59,7 +59,7 @@
 
 ## Quick Deploy
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FSavageChieftain%2Fudonarium-backend-vercel&env=SKYWAY_APP_ID,SKYWAY_SECRET,ACCESS_CONTROL_ALLOW_ORIGIN&project-name=my-udonarium-backend-vercel&repository-name=my-udonarium-backend-vercel)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FXelltis%2Fudonarium-backend-vercel&env=SKYWAY_APP_ID,SKYWAY_SECRET,ACCESS_CONTROL_ALLOW_ORIGIN&project-name=my-udonarium-backend-vercel&repository-name=my-udonarium-backend-vercel)
 
 1. 上記ボタンから Vercel にリポジトリを Clone & Import します
 2. デプロイ画面で必須の環境変数 (`SKYWAY_APP_ID` / `SKYWAY_SECRET` / `ACCESS_CONTROL_ALLOW_ORIGIN`) を入力します
@@ -228,11 +228,11 @@ npx eslint .
 npx prettier --write .
 ```
 
-バグ報告・機能要望は [Issues](https://github.com/SavageChieftain/udonarium-backend-vercel/issues) からお知らせください。
+バグ報告・機能要望は [Issues](https://github.com/Xelltis/udonarium-backend-vercel/issues) からお知らせください。
 
 ## License
 
-[MIT License](./LICENSE) © SavageChieftain
+[MIT License](./LICENSE) © Xelltis
 
 ## Acknowledgements
 
