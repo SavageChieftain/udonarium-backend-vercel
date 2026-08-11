@@ -1,9 +1,11 @@
 # udonarium-backend-vercel
 
+[![CI](https://github.com/Xelltis/udonarium-backend-vercel/actions/workflows/ci.yml/badge.svg)](https://github.com/Xelltis/udonarium-backend-vercel/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
-[![Runtime: Vercel Functions (Node.js)](<https://img.shields.io/badge/runtime-Vercel%20Functions%20(Node.js)-black.svg>)](https://vercel.com/docs/functions/runtimes/node-js)
-[![Built with: Hono](https://img.shields.io/badge/built%20with-Hono-FF7A00.svg)](https://hono.dev/)
-[![Test Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](./vitest.config.ts)
+[![Runtime: Vercel Functions](https://img.shields.io/badge/runtime-Vercel%20Functions-000000.svg?logo=vercel&logoColor=white)](https://vercel.com/docs/functions/runtimes/node-js)
+[![Node.js: 24.x](https://img.shields.io/badge/node-24.x-5FA04E.svg?logo=node.js&logoColor=white)](./package.json)
+[![Built with: Hono](https://img.shields.io/badge/built%20with-Hono-FF7A00.svg?logo=hono&logoColor=white)](https://hono.dev/)
+[![Test Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](./.github/workflows/ci.yml)
 
 ボードゲームオンラインセッション支援ツール [Udonarium](https://github.com/TK11235/udonarium) のバックエンド ([udonarium-backend](https://github.com/TK11235/udonarium-backend)) を、[Vercel Functions](https://vercel.com/docs/functions) 上で動作するように再実装したものです。
 
