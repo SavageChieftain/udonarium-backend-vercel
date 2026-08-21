@@ -9,7 +9,7 @@ export default defineConfig({
     include: ['test/**/*.{test,spec}.?(c|m)[jt]s?(x)'],
     coverage: {
       provider: 'v8',
-      reporter: ['text', 'json', 'html'],
+      reporter: ['text', 'json', 'lcovonly', 'html'],
       include: ['src/**/*.{ts,js}', 'api/**/*.{ts,js}'],
       exclude: ['src/**/types.ts', 'src/http/context.ts'],
       thresholds: {
