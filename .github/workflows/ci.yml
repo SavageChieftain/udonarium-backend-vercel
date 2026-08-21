@@ -30,4 +30,21 @@ jobs:
 
       - run: npm test
 
+      # カバレッジ閾値割れで npm test が落ちた場合も、どの行が落ちたかを
+      # Codecov 上で追えるようアップロードは実行する。
+      #
+      # public リポジトリなので token なしで運用する (Xelltis の Global Upload
+      # Token は Not required)。fork からの PR は secrets を読めないため、
+      # トークン運用にすると fork PR のアップロードが必ず失敗する。
+      # 下の token 行は secret 未設定なら空文字が渡って tokenless に落ちる。
+      # 将来 Global Upload Token を Required に変えても、secret を追加するだけで
+      # ワークフローを触らずに済むよう残してある。
+      - name: Upload coverage to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./coverage/lcov.info
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+
       - run: npm run coverage:check
