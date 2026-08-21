@@ -5,7 +5,7 @@
 [![Runtime: Vercel Functions](https://img.shields.io/badge/runtime-Vercel%20Functions-000000.svg?logo=vercel&logoColor=white)](https://vercel.com/docs/functions/runtimes/node-js)
 [![Node.js: 24.x](https://img.shields.io/badge/node-24.x-5FA04E.svg?logo=node.js&logoColor=white)](./package.json)
 [![Built with: Hono](https://img.shields.io/badge/built%20with-Hono-FF7A00.svg?logo=hono&logoColor=white)](https://hono.dev/)
-[![Test Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](./.github/workflows/ci.yml)
+[![Test Coverage](https://codecov.io/gh/Xelltis/udonarium-backend-vercel/graph/badge.svg)](https://codecov.io/gh/Xelltis/udonarium-backend-vercel)
 
 ボードゲームオンラインセッション支援ツール [Udonarium](https://github.com/TK11235/udonarium) のバックエンド ([udonarium-backend](https://github.com/TK11235/udonarium-backend)) を、[Vercel Functions](https://vercel.com/docs/functions) 上で動作するように再実装したものです。
 
